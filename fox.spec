@@ -117,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc ADDITIONS AUTHORS README TRACING doc
 %attr(755,root,root) %{_bindir}/reswrap
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_mandir}/man1/*
 %{_includedir}/fox
 
