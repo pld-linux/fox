@@ -13,6 +13,7 @@ URL:		http://www.fox-toolkit.org/fox.html
 BuildRequires:	OpenGL-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	bzip2-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
@@ -56,7 +57,13 @@ Edytor i przegl±darka plików napisane z u¿yciem toolkitu FOX.
 Summary:	Header files for FOX library
 Summary(pl):	Pliki nag³ówkowe biblioteki FOX
 Group:		X11/Development/Libraries
+Requires:	OpenGL-devel
+Requires:	bzip2-devel
 Requires:	%{name} = %{version}-%{release}
+Requires:	libjpeg-devel
+Requires:	libpng-devel
+Requires:	libstdc++-devel
+Requires:	libtiff-devel
 
 %description devel
 Header files for FOX library.
