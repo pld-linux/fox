@@ -1,7 +1,7 @@
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl):	FOX - toolkit graficzny w C++
 Name:		fox
-Version:	1.0.34
+Version:	1.1.26
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
@@ -85,10 +85,10 @@ rm -f missing
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure \
-	--with-opengl=mesa \
+%configure LDFLAGS="-L/usr/X11R6/lib"\
+	--with-opengl \
 	%{?debug:--enable-debug}%{!?_debug:--enable-release}
-%{__make} GL_LIBS="-lGL -lGLU"
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
