@@ -99,10 +99,11 @@ Biblioteki statyczne FOX.
 %setup -q
 
 %build
+rm -f missing
 libtoolize -c -f
 aclocal
-automake -a -c
 autoconf
+automake -a -c
 CPPFLAGS="%{rpmcflags} -frtti" \
 #CFLAGS="%{rpmcflags} -frtti" \
 %configure \
