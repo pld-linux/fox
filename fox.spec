@@ -129,22 +129,21 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/reswrap
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_mandir}/*/*
 
 %files progs
 %defattr(644,root,root,755)
 %attr(755,root,root) /%{_bindir}/adie
 %attr(755,root,root) /%{_bindir}/calculator
 %attr(755,root,root) /%{_bindir}/PathFinder
-%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
 %doc *.gz doc
+%attr(755,root,root) %{_bindir}/reswrap
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
+%{_mandir}/man1/*
 %{_includedir}/fox
 
 %files static
