@@ -2,7 +2,7 @@ Summary:	The FOX C++ GUI Toolkit
 Summary(pl):	FOX - toolkit graficzny w C++
 Name:		fox
 Version:	1.2.4
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://www.fox-toolkit.org/ftp/%{name}-%{version}.tar.gz
@@ -110,7 +110,7 @@ install -d $RPM_BUILD_ROOT%{_datadir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-ln -sf libFOX-1.1.so $RPM_BUILD_ROOT%{_libdir}/libFOX.so
+ln -sf libFOX-1.2.so $RPM_BUILD_ROOT%{_libdir}/libFOX.so
 
 rm -f doc/Makefile* doc/*/Makefile*
 
