@@ -87,7 +87,7 @@ Biblioteki statyczne FOX.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-LDFLAGS="%{rpmldflags} -L/usr/X11R6/lib"
+LDFLAGS="%{rpmldflags} -L/usr/X11R6/%{_lib}"
 %configure \
 	--with-opengl \
 	%{?debug:--enable-debug}%{!?_debug:--enable-release}
