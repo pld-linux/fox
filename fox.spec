@@ -35,7 +35,7 @@ beyond the built-in widgets by application writers.
 FOX jest bibliotek± bazuj±c± na C++ do projektowania graficznych
 interfejsów u¿ytkownika. Obs³uguje wiele w³a¶ciwo¶ci wspó³czesnych
 GUI: Drag-and-Drop, listy, ikony, interfejsy wielodokumentowe (MDI),
-liczniki, przetwarznie w tle, automatyczne uaktualnianie GUI, obs³ugê
+liczniki, przetwarzanie w tle, automatyczne uaktualnianie GUI, obs³ugê
 grafiki OpenGL. Bazowe klasy widgetów FOX pozwalaj± na ³atwe
 rozszerzanie.
 
