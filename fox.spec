@@ -1,6 +1,6 @@
 Summary:	The FOX C++ GUI Toolkit
 Name:		fox
-Version:	0.99.172
+Version:	0.99.173
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
@@ -15,6 +15,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_noautoreqdep	libGL.so.1 libGLU.so.1
 %define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
 FOX is a C++-Based Library for Graphical User Interface Development
@@ -24,14 +25,15 @@ idle processing, automatic GUI updating, as well as OpenGL/Mesa for 3D
 graphics. Subclassing of basic FOX widgets allows for easy extension
 beyond the built-in widgets by application writers.
 
-%package example-apps
+%package progs
 Summary:	FOX example applications
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Requires:	%{name} = %{version}
+Obsoletes:	%{name}-example-apps
 
-%description example-apps
+%description progs
 Editor and file browser, written with FOX.
 
 %package devel
@@ -87,10 +89,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/*/*
 
-%files example-apps
+%files progs
 %defattr(644,root,root,755)
 %attr(755,root,root) /%{_bindir}/textedit
 %attr(755,root,root) /%{_bindir}/PathFinder
+%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
