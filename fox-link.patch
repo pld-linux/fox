@@ -1,11 +1,11 @@
---- fox-1.1.37/chart/Makefile.am.orig	2003-09-20 04:34:59.000000000 +0200
-+++ fox-1.1.37/chart/Makefile.am	2003-10-06 20:21:47.314645264 +0200
+--- fox-1.2.4/chart/Makefile.am	2004-05-17 06:58:27.000000000 +0000
++++ fox-1.2.4.new/chart/Makefile.am	2004-06-16 17:57:39.030439224 +0000
 @@ -8,7 +8,7 @@
  
- lib_LTLIBRARIES = libCHART-1.1.la
+ lib_LTLIBRARIES = libCHART-1.2.la
  
--libCHART_1_1_la_LIBADD  = $(X_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS)
-+libCHART_1_1_la_LIBADD  = $(X_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS) ../src/libFOX-1.1.la
+-libCHART_1_2_la_LIBADD  = $(X_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS)
++libCHART_1_2_la_LIBADD  = $(X_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS) ../src/libFOX-1.2.la
  
- libCHART_1_1_la_LDFLAGS = \
+ libCHART_1_2_la_LDFLAGS = \
          -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)    \
