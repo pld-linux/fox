@@ -1,7 +1,7 @@
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl):	FOX - toolkit graficzny w C++
 Name:		fox
-Version:	0.99.174
+Version:	0.99.175
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
@@ -134,7 +134,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files progs
 %defattr(644,root,root,755)
-%attr(755,root,root) /%{_bindir}/textedit
+%attr(755,root,root) /%{_bindir}/adie
+%attr(755,root,root) /%{_bindir}/calculator
 %attr(755,root,root) /%{_bindir}/PathFinder
 %{_mandir}/man1/*
 
