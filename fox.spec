@@ -80,7 +80,7 @@ rm -f missing
 libtoolize -c -f
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 CPPFLAGS="%{rpmcflags} -frtti" \
 #CFLAGS="%{rpmcflags} -frtti" \
 %configure \
