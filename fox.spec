@@ -1,6 +1,6 @@
 Summary:	The FOX C++ GUI Toolkit
 Name:		fox
-Version:	0.99.169
+Version:	0.99.172
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
