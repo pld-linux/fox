@@ -7,10 +7,10 @@ License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.fox-toolkit.org/pub/%{name}-%{version}.tar.gz
 URL:		http://www.cfdrc.com/FOX/fox.html
+BuildRequires:	OpenGL-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-BuildRequires:	OpenGL-devel
 BuildRequires:	libstdc++-devel
 Requires:	OpenGL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -96,8 +96,6 @@ install -d $RPM_BUILD_ROOT/%{_datadir}
 
 cp -p pathfinder/.libs/PathFinder $RPM_BUILD_ROOT%{_bindir}
 
-gzip -9nf ADDITIONS AUTHORS README TRACING
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -116,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz doc
+%doc ADDITIONS AUTHORS README TRACING doc
 %attr(755,root,root) %{_bindir}/reswrap
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
