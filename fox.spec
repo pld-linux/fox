@@ -1,12 +1,12 @@
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl):	FOX - toolkit graficzny w C++
 Name:		fox
-Version:	1.1.45
+Version:	1.1.46
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp.fox-toolkit.org/ftp/%{name}-%{version}.tar.gz
-# Source0-md5:	730d817501a6a2589ca7312503f623dd
+Source0:	http://ftp.fox-toolkit.org/ftp/%{name}-%{version}.tar.bz2
+# Source0-md5:	319ba588e0432e4ff7b995fbb2c8e387
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 URL:		http://www.fox-toolkit.org/fox.html
@@ -43,7 +43,7 @@ rozszerzanie.
 Summary:	FOX example applications
 Summary(pl):	Przyk³ady aplikacji w FOX
 Group:		X11/Applications
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Obsoletes:	%{name}-example-apps
 
 %description progs
@@ -53,28 +53,39 @@ Editor and file browser, written with FOX.
 Edytor i przegl±darka plików napisane z u¿yciem toolkitu FOX.
 
 %package devel
-Summary:	Header files and development documentation for the FOX library
-Summary(pl):	Pliki nag³ówkowe i dokumentacja do biblioteki FOX
+Summary:	Header files for FOX library
+Summary(pl):	Pliki nag³ówkowe biblioteki FOX
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
-Header files and development documentation for the FOX library.
+Header files for FOX library.
 
 %description devel -l pl
-Pliki nag³ówkowe i dokumentacja programisty do biblioteki FOX.
+Pliki nag³ówkowe biblioteki FOX.
 
 %package static
 Summary:	FOX static libraries
 Summary(pl):	Biblioteki statyczne FOX
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 FOX static libraries.
 
 %description static -l pl
 Biblioteki statyczne FOX.
+
+%package doc
+Summary:	Development documentation for FOX library
+Summary(pl):	Dokumentacja programisty do biblioteki FOX
+Group:		X11/Development/Libraries
+
+%description doc
+Development documentation for FOX library.
+
+%description doc -l pl
+Dokumentacja programisty do biblioteki FOX.
 
 %prep
 %setup -q
@@ -126,7 +137,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc ADDITIONS TRACING doc
+%doc ADDITIONS TRACING
 %attr(755,root,root) %{_bindir}/reswrap
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
@@ -136,3 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files doc
+%defattr(644,root,root,755)
+%doc doc/*
