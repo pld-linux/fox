@@ -9,9 +9,11 @@ Group(es):	X11/Bibliotecas
 Group(pl):	X11/Biblioteki
 URL:		http://www.cfdrc.com/FOX/fox.html
 Source0:	ftp://ftp.cfdrc.com/pub/%{name}-%{version}.tar.gz
+BuildRequires:  OpenGL-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Requires:	Mesa
+Requires:	OpenGL
 
+%define 	_noautoreqdep	libGL.so.1 libGLU.so.1
 %define _prefix /usr/X11R6
 
 %description
