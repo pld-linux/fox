@@ -1,12 +1,12 @@
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl):	FOX - toolkit graficzny w C++
 Name:		fox
-Version:	1.1.46
+Version:	1.2.4
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp.fox-toolkit.org/ftp/%{name}-%{version}.tar.bz2
-# Source0-md5:	319ba588e0432e4ff7b995fbb2c8e387
+Source0:	http://www.fox-toolkit.org/ftp/%{name}-%{version}.tar.gz
+# Source0-md5:	43d7311bc9938b2729d8153d259c3896
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 URL:		http://www.fox-toolkit.org/fox.html
