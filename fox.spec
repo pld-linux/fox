@@ -1,4 +1,5 @@
 Summary:	The FOX C++ GUI Toolkit
+Summary(pl):	FOX - toolkit graficzny w C++
 Name:		fox
 Version:	0.99.174
 Release:	1
@@ -6,10 +7,18 @@ License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
+Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
+Group(pt_BR):	X11/Bibliotecas
+Group(ru):	X11/‚…¬Ã…œ‘≈À…
+Group(uk):	X11/‚¶¬Ã¶œ‘≈À…
 Source0:	ftp://ftp.cfdrc.com/pub/FOX/%{name}-%{version}.tar.gz
-BuildRequires:	OpenGL-devel
 URL:		http://www.cfdrc.com/FOX/fox.html
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
+BuildRequires:	OpenGL-devel
+BuildRequires:	libstdc++-devel
 Requires:	OpenGL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -25,8 +34,17 @@ idle processing, automatic GUI updating, as well as OpenGL/Mesa for 3D
 graphics. Subclassing of basic FOX widgets allows for easy extension
 beyond the built-in widgets by application writers.
 
+%description -l pl
+FOX jest bibliotek± bazuj±c± na C++ do projektowania graficznych
+interfejsÛw uøytkownika. Obs≥uguje wiele w≥a∂ciwo∂ci wspÛ≥czesnych
+GUI: Drag-and-Drop, listy, ikony, interfejsy wielodokumentowe (MDI),
+liczniki, przetwarznie w tle, automatyczne uaktualnianie GUI, obs≥ugÍ
+grafiki OpenGL. Bazowe klasy widgetÛw FOX pozwalaj± na ≥atwe
+rozszerzanie.
+
 %package progs
 Summary:	FOX example applications
+Summary(pl):	Przyk≥ady aplikacji w FOX
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
@@ -36,25 +54,46 @@ Obsoletes:	%{name}-example-apps
 %description progs
 Editor and file browser, written with FOX.
 
+%description progs -l pl
+Edytor i przegl±darka plikÛw napisane z uøyciem toolkitu FOX.
+
 %package devel
 Summary:	Header files and development documentation for the FOX library
+Summary(pl):	Pliki nag≥Ûwkowe i dokumentacja do biblioteki FOX
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
+Group(uk):	X11/Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
 Requires:	%{name} = %{version}
 
 %description devel
 Header files and development documentation for the FOX library.
 
+%description devel -l pl
+Pliki nag≥Ûwkowe i dokumentacja programisty do biblioteki FOX.
+
 %package static
 Summary:	FOX static libraries
+Summary(pl):	Biblioteki statyczne FOX
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
+Group(uk):	X11/Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
 Requires:	%{name} = %{version}
 
 %description static
 FOX static libraries.
+
+%description static -l pl
+Biblioteki statyczne FOX.
 
 %prep
 %setup -q
@@ -81,11 +120,11 @@ cp -p pathfinder/.libs/PathFinder $RPM_BUILD_ROOT%{_bindir}
 
 gzip -9nf ADDITIONS AUTHORS BUGS README TRACING
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
