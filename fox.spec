@@ -118,6 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/adie
 %attr(755,root,root) %{_bindir}/calculator
 %attr(755,root,root) %{_bindir}/PathFinder
+%attr(755,root,root) %{_bindir}/shutterbug
 
 %files devel
 %defattr(644,root,root,755)
