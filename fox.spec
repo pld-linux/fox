@@ -47,7 +47,10 @@ Summary:	FOX example applications
 Summary(pl):	Przyk³ady aplikacji w FOX
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Requires:	%{name} = %{version}
 Obsoletes:	%{name}-example-apps
 
