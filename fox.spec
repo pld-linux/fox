@@ -7,6 +7,7 @@ License:	LGPL
 Group:		X11/Libraries
 #Source0ActiveFTP
 Source0:	ftp://ftp.fox-toolkit.org/pub/%{name}-%{version}.tar.gz
+# Source0-md5:	866124f526138c104e9415ec697cbc7e
 Patch0:		%{name}-opt.patch
 URL:		http://www.fox-toolkit.org/fox.html
 BuildRequires:	OpenGL-devel
