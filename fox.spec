@@ -2,19 +2,19 @@ Summary:	The FOX C++ GUI Toolkit
 Name:		fox
 Version:	0.99.167
 Release:	1
-Copyright:	GNU LGPL
+License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
 Group(pl):	X11/Biblioteki
-URL:		http://www.cfdrc.com/FOX/fox.html
 Source0:	ftp://ftp.cfdrc.com/pub/%{name}-%{version}.tar.gz
-BuildRequires:  OpenGL-devel
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	OpenGL-devel
+URL:		http://www.cfdrc.com/FOX/fox.html
 Requires:	OpenGL
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_noautoreqdep	libGL.so.1 libGLU.so.1
-%define _prefix /usr/X11R6
+%define		_prefix		/usr/X11R6
 
 %description
 FOX is a C++-Based Library for Graphical User Interface Development
@@ -32,7 +32,7 @@ Group(pl):	X11/Aplikacje
 Requires:	%{name} = %{version}
 
 %description example-apps
-editor and file browser, written with FOX
+Editor and file browser, written with FOX.
 
 %package devel
 Summary:	Header files and development documentation for the FOX library
@@ -42,7 +42,7 @@ Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description devel
-Header files  and development documentation for the FOX library
+Header files and development documentation for the FOX library.
 
 %package static
 Summary:	FOX static libraries
@@ -52,33 +52,40 @@ Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description static
-FOX static libraries
+FOX static libraries.
 
 %prep
 %setup -q
 
 %build
-CPPFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O0 -g} -frtti" CFLAGS="$RPM_OPT_FLAGS -frtti" \
-./configure --prefix=%{_prefix} --with-opengl=mesa --enable-release
+CPPFLAGS="%{!?debug:$RPM_OPT_FLAGS -frtti}%{?debug:-O0 -g}" \
+#CFLAGS="%{!?debug:$RPM_OPT_FLAGS -frtti}%{?debug:-O0 -g}" \
+%configure \
+	--with-opengl=mesa \
+	--enable-release
 %{__make} GL_LIBS="-lGL -lGLU"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install prefix=$RPM_BUILD_ROOT/%{_prefix}
-cp -p pathfinder/.libs/PathFinder $RPM_BUILD_ROOT/%{_bindir}
-mkdir $RPM_BUILD_ROOT/%{_prefix}/share
-mv $RPM_BUILD_ROOT/%{_prefix}/man $RPM_BUILD_ROOT/%{_prefix}/share
+install -d $RPM_BUILD_ROOT/%{_datadir}
+
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+cp -p pathfinder/.libs/PathFinder $RPM_BUILD_ROOT%{_bindir}
+
+gzip -9nf ADDITIONS AUTHORS BUGS README TRACING
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) /%{_bindir}/reswrap
-%attr(755,root,root) /%{_libdir}/libFOX-0.99.so.167.0.0
-/%{_libdir}/libFOX-0.99.so.167
-/%{_mandir}/*/*
-%doc ADDITIONS AUTHORS BUGS INSTALL LICENSE README TRACING
+%attr(755,root,root) %{_bindir}/reswrap
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%{_mandir}/*/*
 
 %files example-apps
 %defattr(644,root,root,755)
@@ -87,11 +94,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-/%{_includedir}/fox
-/%{_libdir}/libFOX.so
-/%{_libdir}/libFOX.la
-%doc doc
+%doc *.gz doc
+%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
+%{_includedir}/fox
 
 %files static
 %defattr(644,root,root,755)
-/%{_libdir}/libFOX.a
+%{_libdir}/lib*.a
