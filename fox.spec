@@ -5,13 +5,6 @@ Version:	0.99.189
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Group(de):	X11/Libraries
-Group(es):	X11/Bibliotecas
-Group(fr):	X11/Librairies
-Group(pl):	X11/Biblioteki
-Group(pt_BR):	X11/Bibliotecas
-Group(ru):	X11/Библиотеки
-Group(uk):	X11/Б╕бл╕отеки
 Source0:	ftp://ftp.fox-toolkit.org/pub/%{name}-%{version}.tar.gz
 URL:		http://www.cfdrc.com/FOX/fox.html
 BuildRequires:	autoconf
@@ -46,11 +39,6 @@ rozszerzanie.
 Summary:	FOX example applications
 Summary(pl):	PrzykЁady aplikacji w FOX
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/AplicaГУes
-Group(pt):	X11/AplicaГУes
 Requires:	%{name} = %{version}
 Obsoletes:	%{name}-example-apps
 
@@ -64,13 +52,6 @@ Edytor i przegl╠darka plikСw napisane z u©yciem toolkitu FOX.
 Summary:	Header files and development documentation for the FOX library
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do biblioteki FOX
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
-Group(es):	X11/Desarrollo/Bibliotecas
-Group(fr):	X11/Development/Librairies
-Group(pl):	X11/Programowanie/Biblioteki
-Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
-Group(ru):	X11/Разработка/Библиотеки
-Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
@@ -83,13 +64,6 @@ Pliki nagЁСwkowe i dokumentacja programisty do biblioteki FOX.
 Summary:	FOX static libraries
 Summary(pl):	Biblioteki statyczne FOX
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
-Group(es):	X11/Desarrollo/Bibliotecas
-Group(fr):	X11/Development/Librairies
-Group(pl):	X11/Programowanie/Biblioteki
-Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
-Group(ru):	X11/Разработка/Библиотеки
-Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
