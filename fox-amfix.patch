@@ -1,0 +1,10 @@
+--- fox-1.1.35/include/Makefile.am.orig	2003-08-26 00:56:58.000000000 +0200
++++ fox-1.1.35/include/Makefile.am	2003-09-02 21:49:24.122822800 +0200
+@@ -1,7 +1,5 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-#pkginclude_HEADERS = \
+-
+ foxincludedir=$(includedir)/fox-1.1
+ foxinclude_HEADERS =   \
+ FX4Splitter.h \
