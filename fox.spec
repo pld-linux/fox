@@ -58,8 +58,8 @@ FOX static libraries.
 %setup -q
 
 %build
-CPPFLAGS="%{!?debug:$RPM_OPT_FLAGS -frtti}%{?debug:-O0 -g}" \
-#CFLAGS="%{!?debug:$RPM_OPT_FLAGS -frtti}%{?debug:-O0 -g}" \
+CPPFLAGS="%{rpmcflags} -frtti" \
+#CFLAGS="%{rpmcflags} -frtti" \
 %configure \
 	--with-opengl=mesa \
 	--enable-release
