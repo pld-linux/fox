@@ -60,6 +60,10 @@ FOX static libraries.
 %setup -q
 
 %build
+libtoolize -c -f
+aclocal
+automake -a -c
+autoconf
 CPPFLAGS="%{rpmcflags} -frtti" \
 #CFLAGS="%{rpmcflags} -frtti" \
 %configure \
