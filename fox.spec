@@ -78,7 +78,7 @@ Biblioteki statyczne FOX.
 %build
 rm -f missing
 libtoolize -c -f
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 CPPFLAGS="%{rpmcflags} -frtti" \
