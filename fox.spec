@@ -1,15 +1,16 @@
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl):	FOX - toolkit graficzny w C++
 Name:		fox
-Version:	1.1.35
+Version:	1.1.37
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
 #Source0ActiveFTP
 Source0:	http://ftp.fox-toolkit.org/ftp/%{name}-%{version}.tar.gz
-# Source0-md5:	bc1535f9f8bbb481b7f14b985f75ff6b
+# Source0-md5:	6248cc760ae9b464cd519b4b6e909e07
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-amfix.patch
+Patch2:		%{name}-link.patch
 URL:		http://www.fox-toolkit.org/fox.html
 BuildRequires:	OpenGL-devel
 BuildRequires:	autoconf
@@ -81,9 +82,9 @@ Biblioteki statyczne FOX.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-#rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -101,7 +102,8 @@ install -d $RPM_BUILD_ROOT%{_datadir}
 # new fox installs headers in include/fox-1.1, but apps expect them as <fox/*.h>
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	foxincludedir=%{_includedir}/fox
+	foxincludedir=%{_includedir}/fox \
+	chartincludedir=%{_includedir}/fox/chart
 
 ln -sf libFOX-1.1.so $RPM_BUILD_ROOT%{_libdir}/libFOX.so
 
