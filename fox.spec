@@ -1,6 +1,6 @@
 Summary:	The FOX C++ GUI Toolkit
 Name:		fox
-Version:	0.99.164
+Version:	0.99.167
 Release:	1
 Copyright:	GNU LGPL
 Group:		X11/Libraries
@@ -75,8 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) /%{_bindir}/reswrap
-%attr(755,root,root) /%{_libdir}/libFOX-0.99.so.164.0.0
-/%{_libdir}/libFOX-0.99.so.164
+%attr(755,root,root) /%{_libdir}/libFOX-0.99.so.167.0.0
+/%{_libdir}/libFOX-0.99.so.167
 /%{_mandir}/*/*
 %doc ADDITIONS AUTHORS BUGS INSTALL LICENSE README TRACING
 
