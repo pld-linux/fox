@@ -1,5 +1,6 @@
 #
-%bcond_without	static_libs # don't build static libraries
+# Conditional build:
+%bcond_without	static_libs	# don't build static libraries
 #
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl):	FOX - toolkit graficzny w C++
@@ -24,7 +25,6 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
 BuildRequires:	xcursor-devel
-Requires:	OpenGL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_noautoreqdep	libGL.so.1 libGLU.so.1
