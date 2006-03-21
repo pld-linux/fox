@@ -1,3 +1,6 @@
+#
+%bcond_without	static_libs # don't build static libraries
+#
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl):	FOX - toolkit graficzny w C++
 Name:		fox
@@ -6,7 +9,7 @@ Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.fox-toolkit.com/pub/%{name}-%{version}.tar.gz
-# Source0-md5:	4f3a57360e1d27e07991a5d98c60b1b2
+# Source0-md5:	cc700a729aecfad9b67e9300cf05b961
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 Patch2:		%{name}-Makefile.patch
@@ -111,7 +114,8 @@ Dokumentacja programisty do biblioteki FOX.
 LDFLAGS="%{rpmldflags} -L/usr/X11R6/%{_lib}"
 %configure \
 	--with-opengl \
-	%{?debug:--enable-debug}%{!?debug:--enable-release}
+	%{?debug:--enable-debug}%{!?debug:--enable-release} \
+	--enable-static=%{?with_static_libs:yes}%{!?with_static_libs:no}
 %{__make}
 
 %install
@@ -154,9 +158,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_includedir}/fox-1.6
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
 
 %files doc
 %defattr(644,root,root,755)
