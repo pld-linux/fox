@@ -6,7 +6,7 @@ Summary:	The FOX C++ GUI Toolkit
 Summary(pl):	FOX - toolkit graficzny w C++
 Name:		fox
 Version:	1.6.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.fox-toolkit.com/pub/%{name}-%{version}.tar.gz
@@ -15,16 +15,20 @@ Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 Patch2:		%{name}-Makefile.patch
 URL:		http://www.fox-toolkit.org/fox.html
-BuildRequires:	OpenGL-devel
-BuildRequires:	autoconf
+BuildRequires:	OpenGL-GLU-devel
+BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
-BuildRequires:	bzip2-devel
-BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel
+BuildRequires:	bzip2-devel >= 1.0.2
+BuildRequires:	libjpeg-devel >= 6b
+BuildRequires:	libpng-devel >= 1.2.5
 BuildRequires:	libstdc++-devel
-BuildRequires:	libtiff-devel
-BuildRequires:	libtool
-BuildRequires:	xcursor-devel
+BuildRequires:	libtiff-devel >= 3.5.7
+BuildRequires:	libtool >= 2:1.5
+BuildRequires:	xorg-lib-libXcursor-devel
+BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	xorg-lib-libXft-devel
+BuildRequires:	xorg-lib-libXrandr-devel
+BuildRequires:	zlib-devel >= 1.1.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_noautoreqdep	libGL.so.1 libGLU.so.1
@@ -50,7 +54,7 @@ Summary:	FOX example applications
 Summary(pl):	Przyk³ady aplikacji w FOX
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	%{name}-example-apps
+Obsoletes:	fox-example-apps
 
 %description progs
 Editor and file browser, written with FOX.
@@ -63,13 +67,17 @@ Summary:	Header files for FOX library
 Summary(pl):	Pliki nag³ówkowe biblioteki FOX
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	OpenGL-devel
-Requires:	bzip2-devel
-Requires:	libjpeg-devel
-Requires:	libpng-devel
+Requires:	OpenGL-GLU-devel
+Requires:	bzip2-devel >= 1.0.2
+Requires:	libjpeg-devel >= 6b
+Requires:	libpng-devel >= 1.2.5
 Requires:	libstdc++-devel
-Requires:	libtiff-devel
-Requires:	xcursor-devel
+Requires:	libtiff-devel >= 3.5.7
+Requires:	xorg-lib-libXcursor-devel
+Requires:	xorg-lib-libXext-devel
+Requires:	xorg-lib-libXft-devel
+Requires:	xorg-lib-libXrandr-devel
+Requires:	zlib-devel >= 1.1.4
 
 %description devel
 Header files for FOX library.
@@ -111,11 +119,11 @@ Dokumentacja programisty do biblioteki FOX.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-LDFLAGS="%{rpmldflags} -L/usr/X11R6/%{_lib}"
 %configure \
-	--with-opengl \
 	%{?debug:--enable-debug}%{!?debug:--enable-release} \
-	--enable-static=%{?with_static_libs:yes}%{!?with_static_libs:no}
+	--enable-static=%{?with_static_libs:yes}%{!?with_static_libs:no} \
+	--with-opengl \
+	--with-xft
 %{__make}
 
 %install
