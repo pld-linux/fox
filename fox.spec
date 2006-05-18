@@ -6,7 +6,7 @@ Summary:	The FOX C++ GUI Toolkit
 Summary(pl):	FOX - toolkit graficzny w C++
 Name:		fox
 Version:	1.6.4
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.fox-toolkit.com/pub/%{name}-%{version}.tar.gz
@@ -110,6 +110,18 @@ Development documentation for FOX library.
 %description doc -l pl
 Dokumentacja programisty do biblioteki FOX.
 
+%package examples
+Summary:	FOX - example programs
+Summary(pl):	FOX - programy przyk³adowe
+Group:		X11/Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description examples
+FOX - example programs.
+
+%description examples -l pl
+FOX - przyk³adowe programy.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -132,7 +144,7 @@ Dokumentacja programisty do biblioteki FOX.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}
+install -d $RPM_BUILD_ROOT{%{_datadir},%{_examplesdir}/%{name}-%{version}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -140,6 +152,9 @@ install -d $RPM_BUILD_ROOT%{_datadir}
 ln -sf libFOX-1.6.so $RPM_BUILD_ROOT%{_libdir}/libFOX.so
 
 rm -f doc/Makefile* doc/*/Makefile*
+
+%{__make} -C tests clean
+cp -r tests/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -179,3 +194,7 @@ rm -rf $RPM_BUILD_ROOT
 %files doc
 %defattr(644,root,root,755)
 %doc doc/*
+
+%files examples
+%defattr(644,root,root,755)
+%{_examplesdir}/%{name}-%{version}
