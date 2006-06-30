@@ -184,6 +184,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/fox-1.6
+%{_pkgconfigdir}/fox.pc
 
 %if %{with static_libs}
 %files static
