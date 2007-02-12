@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static libraries
 #
 Summary:	The FOX C++ GUI Toolkit
-Summary(pl):	FOX - toolkit graficzny w C++
+Summary(pl.UTF-8):   FOX - toolkit graficzny w C++
 Name:		fox
 Version:	1.6.20
 Release:	1
@@ -43,17 +43,17 @@ idle processing, automatic GUI updating, as well as OpenGL/Mesa for 3D
 graphics. Subclassing of basic FOX widgets allows for easy extension
 beyond the built-in widgets by application writers.
 
-%description -l pl
-FOX jest bibliotek± bazuj±c± na C++ do projektowania graficznych
-interfejsÛw uøytkownika. Obs≥uguje wiele w≥a∂ciwo∂ci wspÛ≥czesnych
+%description -l pl.UTF-8
+FOX jest bibliotekƒÖ bazujƒÖcƒÖ na C++ do projektowania graficznych
+interfejs√≥w u≈ºytkownika. Obs≈Çuguje wiele w≈Ça≈õciwo≈õci wsp√≥≈Çczesnych
 GUI: Drag-and-Drop, listy, ikony, interfejsy wielodokumentowe (MDI),
-liczniki, przetwarzanie w tle, automatyczne uaktualnianie GUI, obs≥ugÍ
-grafiki OpenGL. Bazowe klasy widgetÛw FOX pozwalaj± na ≥atwe
+liczniki, przetwarzanie w tle, automatyczne uaktualnianie GUI, obs≈Çugƒô
+grafiki OpenGL. Bazowe klasy widget√≥w FOX pozwalajƒÖ na ≈Çatwe
 rozszerzanie.
 
 %package progs
 Summary:	FOX example applications
-Summary(pl):	Przyk≥ady aplikacji w FOX
+Summary(pl.UTF-8):   Przyk≈Çady aplikacji w FOX
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	fox-example-apps
@@ -61,12 +61,12 @@ Obsoletes:	fox-example-apps
 %description progs
 Editor and file browser, written with FOX.
 
-%description progs -l pl
-Edytor i przegl±darka plikÛw napisane z uøyciem toolkitu FOX.
+%description progs -l pl.UTF-8
+Edytor i przeglƒÖdarka plik√≥w napisane z u≈ºyciem toolkitu FOX.
 
 %package devel
 Summary:	Header files for FOX library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki FOX
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki FOX
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
@@ -84,43 +84,43 @@ Requires:	zlib-devel >= 1.1.4
 %description devel
 Header files for FOX library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki FOX.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki FOX.
 
 %package static
 Summary:	FOX static libraries
-Summary(pl):	Biblioteki statyczne FOX
+Summary(pl.UTF-8):   Biblioteki statyczne FOX
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 FOX static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne FOX.
 
 %package doc
 Summary:	Development documentation for FOX library
-Summary(pl):	Dokumentacja programisty do biblioteki FOX
+Summary(pl.UTF-8):   Dokumentacja programisty do biblioteki FOX
 Group:		X11/Development/Libraries
 
 %description doc
 Development documentation for FOX library.
 
-%description doc -l pl
+%description doc -l pl.UTF-8
 Dokumentacja programisty do biblioteki FOX.
 
 %package examples
 Summary:	FOX - example programs
-Summary(pl):	FOX - programy przyk≥adowe
+Summary(pl.UTF-8):   FOX - programy przyk≈Çadowe
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description examples
 FOX - example programs.
 
-%description examples -l pl
-FOX - przyk≥adowe programy.
+%description examples -l pl.UTF-8
+FOX - przyk≈Çadowe programy.
 
 %prep
 %setup -q
