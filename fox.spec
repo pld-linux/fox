@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static libraries
 #
 Summary:	The FOX C++ GUI Toolkit
-Summary(pl.UTF-8):   FOX - toolkit graficzny w C++
+Summary(pl.UTF-8):	FOX - toolkit graficzny w C++
 Name:		fox
 Version:	1.6.20
 Release:	1
@@ -53,7 +53,7 @@ rozszerzanie.
 
 %package progs
 Summary:	FOX example applications
-Summary(pl.UTF-8):   Przykłady aplikacji w FOX
+Summary(pl.UTF-8):	Przykłady aplikacji w FOX
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	fox-example-apps
@@ -66,7 +66,7 @@ Edytor i przeglądarka plików napisane z użyciem toolkitu FOX.
 
 %package devel
 Summary:	Header files for FOX library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki FOX
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki FOX
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
@@ -89,7 +89,7 @@ Pliki nagłówkowe biblioteki FOX.
 
 %package static
 Summary:	FOX static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne FOX
+Summary(pl.UTF-8):	Biblioteki statyczne FOX
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -101,7 +101,7 @@ Biblioteki statyczne FOX.
 
 %package doc
 Summary:	Development documentation for FOX library
-Summary(pl.UTF-8):   Dokumentacja programisty do biblioteki FOX
+Summary(pl.UTF-8):	Dokumentacja programisty do biblioteki FOX
 Group:		X11/Development/Libraries
 
 %description doc
@@ -112,7 +112,7 @@ Dokumentacja programisty do biblioteki FOX.
 
 %package examples
 Summary:	FOX - example programs
-Summary(pl.UTF-8):   FOX - programy przykładowe
+Summary(pl.UTF-8):	FOX - programy przykładowe
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
