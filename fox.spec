@@ -165,7 +165,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS LICENSE_ADDENDUM README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libCHART-1.6.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libCHART-1.6.so.0
+%attr(755,root,root) %{_libdir}/libFOX-1.6.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libFOX-1.6.so.0
 
 %files progs
 %defattr(644,root,root,755)
@@ -181,15 +184,19 @@ rm -rf $RPM_BUILD_ROOT
 %doc ADDITIONS TRACING
 %attr(755,root,root) %{_bindir}/fox-config
 %attr(755,root,root) %{_bindir}/reswrap
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libCHART-1.6.so
+%attr(755,root,root) %{_libdir}/libFOX-1.6.so
+%attr(755,root,root) %{_libdir}/libFOX.so
+%{_libdir}/libCHART-1.6.la
+%{_libdir}/libFOX-1.6.la
 %{_includedir}/fox-1.6
 %{_pkgconfigdir}/fox.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libCHART-1.6.a
+%{_libdir}/libFOX-1.6.a
 %endif
 
 %files doc
