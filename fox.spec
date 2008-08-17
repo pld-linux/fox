@@ -19,6 +19,7 @@ BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	bzip2-devel >= 1.0.2
+BuildRequires:	cups-devel
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	libjpeg-devel >= 6b
@@ -134,10 +135,17 @@ FOX - przykładowe programy.
 %{__autoconf}
 %{__automake}
 %configure \
+	--enable-cups \
 	%{?debug:--enable-debug}%{!?debug:--enable-release} \
 	--enable-static=%{?with_static_libs:yes}%{!?with_static_libs:no} \
 	--with-opengl \
-	--with-xft
+	--with-xft \
+	--with-shape \
+	--with-xshm \
+	--with-xcursor \
+	--with-xrandr \
+	--with-xim
+
 %{__make}
 
 %{__make} -C doc docs
