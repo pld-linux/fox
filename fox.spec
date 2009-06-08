@@ -5,12 +5,12 @@
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl.UTF-8):	FOX - toolkit graficzny w C++
 Name:		fox
-Version:	1.6.34
-Release:	2
+Version:	1.7.19
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.fox-toolkit.com/pub/%{name}-%{version}.tar.gz
-# Source0-md5:	920124025d6495bbd008be635ff759ad
+# Source0-md5:	fb4d0934be26c27c7e76fcbefe2b5d30
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 Patch2:		%{name}-Makefile.patch
@@ -157,7 +157,7 @@ install -d $RPM_BUILD_ROOT{%{_datadir},%{_examplesdir}/%{name}-%{version}}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-ln -sf libFOX-1.6.so $RPM_BUILD_ROOT%{_libdir}/libFOX.so
+ln -sf libFOX-1.7.so $RPM_BUILD_ROOT%{_libdir}/libFOX.so
 
 rm -f doc/Makefile* doc/*/Makefile*
 
@@ -173,10 +173,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS LICENSE_ADDENDUM README
-%attr(755,root,root) %{_libdir}/libCHART-1.6.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libCHART-1.6.so.0
-%attr(755,root,root) %{_libdir}/libFOX-1.6.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libFOX-1.6.so.0
+%attr(755,root,root) %{_libdir}/libCHART-1.7.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libCHART-1.7.so.0
+%attr(755,root,root) %{_libdir}/libFOX-1.7.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libFOX-1.7.so.0
+%attr(755,root,root) %{_bindir}/ControlPanel
 
 %files progs
 %defattr(644,root,root,755)
@@ -192,19 +193,19 @@ rm -rf $RPM_BUILD_ROOT
 %doc ADDITIONS TRACING
 %attr(755,root,root) %{_bindir}/fox-config
 %attr(755,root,root) %{_bindir}/reswrap
-%attr(755,root,root) %{_libdir}/libCHART-1.6.so
-%attr(755,root,root) %{_libdir}/libFOX-1.6.so
+%attr(755,root,root) %{_libdir}/libCHART-1.7.so
+%attr(755,root,root) %{_libdir}/libFOX-1.7.so
 %attr(755,root,root) %{_libdir}/libFOX.so
-%{_libdir}/libCHART-1.6.la
-%{_libdir}/libFOX-1.6.la
-%{_includedir}/fox-1.6
+%{_libdir}/libCHART-1.7.la
+%{_libdir}/libFOX-1.7.la
+%{_includedir}/fox-1.7
 %{_pkgconfigdir}/fox.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libCHART-1.6.a
-%{_libdir}/libFOX-1.6.a
+%{_libdir}/libCHART-1.7.a
+%{_libdir}/libFOX-1.7.a
 %endif
 
 %files doc
