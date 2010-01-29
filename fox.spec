@@ -27,6 +27,7 @@ BuildRequires:	libpng-devel >= 1.2.5
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel >= 3.5.7
 BuildRequires:	libtool >= 2:1.5
+BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libXcursor-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXft-devel
