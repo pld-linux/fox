@@ -6,7 +6,7 @@ Summary:	The FOX C++ GUI Toolkit
 Summary(pl.UTF-8):	FOX - toolkit graficzny w C++
 Name:		fox
 Version:	1.7.19
-Release:	6
+Release:	7
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.fox-toolkit.com/pub/%{name}-%{version}.tar.gz
@@ -22,7 +22,6 @@ BuildRequires:	automake
 BuildRequires:	bzip2-devel >= 1.0.2
 BuildRequires:	cups-devel
 BuildRequires:	doxygen
-BuildRequires:	graphviz
 BuildRequires:	libjpeg-devel >= 6b
 BuildRequires:	libpng-devel >= 1.2.5
 BuildRequires:	libstdc++-devel
@@ -32,6 +31,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libXcursor-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXft-devel
+BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXrandr-devel
 BuildRequires:	zlib-devel >= 1.1.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -82,6 +82,7 @@ Requires:	libtiff-devel >= 3.5.7
 Requires:	xorg-lib-libXcursor-devel
 Requires:	xorg-lib-libXext-devel
 Requires:	xorg-lib-libXft-devel
+Requires:	xorg-lib-libXi-devel
 Requires:	xorg-lib-libXrandr-devel
 Requires:	zlib-devel >= 1.1.4
 
