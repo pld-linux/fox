@@ -143,7 +143,7 @@ FOX - przykładowe programy.
 %configure \
 	%{?with_cups:--enable-cups} \
 	%{?debug:--enable-debug}%{!?debug:--enable-release} \
-	--enable-static=%{?with_static_libs:yes}%{!?with_static_libs:no} \
+	--enable-static%{!?with_static_libs:=no} \
 	--with-opengl \
 	--with-xft \
 	--with-shape \
