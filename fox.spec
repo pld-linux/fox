@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_without	cups		# CUPS support
 %bcond_without	static_libs	# don't build static libraries
 #
 Summary:	The FOX C++ GUI Toolkit
@@ -20,7 +21,7 @@ BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	bzip2-devel >= 1.0.2
-BuildRequires:	cups-devel
+%{?with_cups:BuildRequires:	cups-devel}
 BuildRequires:	doxygen
 BuildRequires:	libjpeg-devel >= 6b
 BuildRequires:	libpng-devel >= 1.2.5
@@ -140,7 +141,7 @@ FOX - przykładowe programy.
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-cups \
+	%{?with_cups:--enable-cups} \
 	%{?debug:--enable-debug}%{!?debug:--enable-release} \
 	--enable-static=%{?with_static_libs:yes}%{!?with_static_libs:no} \
 	--with-opengl \
@@ -164,10 +165,10 @@ install -d $RPM_BUILD_ROOT{%{_datadir},%{_examplesdir}/%{name}-%{version}}
 
 ln -sf libFOX-1.7.so $RPM_BUILD_ROOT%{_libdir}/libFOX.so
 
-rm -f doc/Makefile* doc/*/Makefile*
-
 %{__make} -C tests clean
 cp -r tests/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+%{__rm} doc/Makefile* doc/*/Makefile*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -178,20 +179,24 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS LICENSE_ADDENDUM README
+%attr(755,root,root) %{_bindir}/ControlPanel
 %attr(755,root,root) %{_libdir}/libCHART-1.7.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libCHART-1.7.so.0
 %attr(755,root,root) %{_libdir}/libFOX-1.7.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libFOX-1.7.so.0
-%attr(755,root,root) %{_bindir}/ControlPanel
+%{_mandir}/man1/ControlPanel.1*
 
 %files progs
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/Adie.stx
+%attr(755,root,root) %{_bindir}/PathFinder
 %attr(755,root,root) %{_bindir}/adie
 %attr(755,root,root) %{_bindir}/calculator
-%attr(755,root,root) %{_bindir}/PathFinder
 %attr(755,root,root) %{_bindir}/shutterbug
-%attr(755,root,root) %{_bindir}/Adie.stx
-%{_mandir}/man1/*
+%{_mandir}/man1/PathFinder.1*
+%{_mandir}/man1/adie.1*
+%{_mandir}/man1/calculator.1*
+%{_mandir}/man1/shutterbug.1*
 
 %files devel
 %defattr(644,root,root,755)
@@ -205,6 +210,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libFOX-1.7.la
 %{_includedir}/fox-1.7
 %{_pkgconfigdir}/fox.pc
+%{_mandir}/man1/reswrap.1*
 
 %if %{with static_libs}
 %files static
