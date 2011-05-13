@@ -1,21 +1,10 @@
---- fox-1.7.19/chart/Makefile.am.orig	2005-09-23 09:23:31.000000000 +0200
-+++ fox-1.7.19/chart/Makefile.am	2005-10-18 19:56:09.182342080 +0200
-@@ -8,7 +8,7 @@
- 
- lib_LTLIBRARIES = libCHART-1.7.la
- 
--libCHART_1_7_la_LIBADD  = $(X_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS)
-+libCHART_1_7_la_LIBADD  = $(X_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS) ../src/libFOX-1.7.la
- 
- libCHART_1_7_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) -export-dynamic
-
---- fox-1.7.19/src/Makefile.am~	2009-01-23 04:34:27.000000000 +0100
-+++ fox-1.7.19/src/Makefile.am	2011-01-30 17:37:53.232169448 +0100
+--- fox-1.7.25/lib/Makefile.am.orig	2010-11-02 03:07:14.000000000 +0100
++++ fox-1.7.25/lib/Makefile.am	2011-05-13 16:24:24.319335269 +0200
 @@ -7,7 +7,7 @@
  
  lib_LTLIBRARIES = libFOX-1.7.la
  
--libFOX_1_7_la_LIBADD  = $(X_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS) $(GL_LIBS)
+-libFOX_1_7_la_LIBADD  = $(X_LIBS) $(X_PRE_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS) $(GL_LIBS)
 +libFOX_1_7_la_LIBADD  = $(X_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS) $(GL_LIBS) -lfontconfig
  
  libFOX_1_7_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) -export-dynamic

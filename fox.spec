@@ -6,16 +6,16 @@
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl.UTF-8):	FOX - toolkit graficzny w C++
 Name:		fox
-Version:	1.7.19
-Release:	7
-License:	LGPL
+Version:	1.7.25
+Release:	1
+License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	ftp://ftp.fox-toolkit.com/pub/%{name}-%{version}.tar.gz
-# Source0-md5:	fb4d0934be26c27c7e76fcbefe2b5d30
+Source0:	http://fox-toolkit.org/ftp/%{name}-%{version}.tar.gz
+# Source0-md5:	232e2996be39148287e80b59061c7a66
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 Patch2:		%{name}-Makefile.patch
-Patch3:		pkgconfig.patch
+Patch3:		%{name}-Xlib.patch
 URL:		http://www.fox-toolkit.org/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	autoconf >= 2.59-9
@@ -153,8 +153,6 @@ FOX - przykładowe programy.
 	--with-xim
 
 %{__make}
-
-%{__make} -C doc docs
 
 %install
 rm -rf $RPM_BUILD_ROOT

@@ -1,0 +1,29 @@
+--- fox-1.7.25/lib/FXApp.cpp.orig	2010-09-28 02:55:41.000000000 +0200
++++ fox-1.7.25/lib/FXApp.cpp	2011-05-13 16:48:16.326049884 +0200
+@@ -1207,7 +1207,7 @@
+ #ifndef NO_XIM
+   XIMCallback ximcallback;
+   fxwarning("Warning: input method server restarted.\n");
+-  XUnregisterIMInstantiateCallback((Display*)app->getDisplay(),NULL,NULL,NULL,(XIMProc)imcreatecallback,(XPointer)a);
++  XUnregisterIMInstantiateCallback((Display*)app->getDisplay(),NULL,NULL,NULL,(XIDProc)imcreatecallback,(XPointer)a);
+   a->xim=XOpenIM((Display*)app->display,NULL,NULL,NULL);
+   if(a->xim){
+     ximcallback.callback=(XIMProc)imdestroycallback;
+@@ -1222,7 +1222,7 @@
+ void FXApp::imdestroycallback(void*,FXApp* a,void*){
+ #ifndef NO_XIM
+   fxwarning("Warning: input method server terminated.\n");
+-  XRegisterIMInstantiateCallback((Display*)a->getDisplay(),NULL,NULL,NULL,(XIMProc)imcreatecallback,(XPointer)a);
++  XRegisterIMInstantiateCallback((Display*)a->getDisplay(),NULL,NULL,NULL,(XIDProc)imcreatecallback,(XPointer)a);
+   a->xim=NULL;
+ #endif
+   }
+@@ -1538,7 +1538,7 @@
+       FXTRACE((100,"Got Input Method\n"));
+       }
+     else{
+-      XRegisterIMInstantiateCallback((Display*)display,NULL,NULL,NULL,(XIMProc)imcreatecallback,(XPointer)this);
++      XRegisterIMInstantiateCallback((Display*)display,NULL,NULL,NULL,(XIDProc)imcreatecallback,(XPointer)this);
+       }
+ #endif
+ 
