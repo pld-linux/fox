@@ -1,5 +1,5 @@
---- fox-1.7.25/configure.ac.orig	2010-11-24 06:11:50.000000000 +0100
-+++ fox-1.7.25/configure.ac	2011-05-13 16:20:27.532660673 +0200
+--- fox-1.7.26/configure.ac.orig	2011-04-13 02:14:35.000000000 +0200
++++ fox-1.7.26/configure.ac	2011-05-28 07:38:29.803780335 +0200
 @@ -56,9 +56,6 @@
  AC_SUBST(LT_REVISION)
  AC_SUBST(LT_AGE)
@@ -26,7 +26,7 @@
 -  CXXFLAGS="${CXXFLAGS} -O2 -DNDEBUG"
 +  CXXFLAGS="${CXXFLAGS} -DNDEBUG"
    if test "${GXX}" = "yes" ; then
-     CXXFLAGS="${CXXFLAGS} -Wuninitialized -ffast-math -fstrict-aliasing -finline-functions -fomit-frame-pointer -fexpensive-optimizations"
+     CXXFLAGS="${CXXFLAGS} -Wuninitialized -ffast-math -fstrict-aliasing -finline-functions -fomit-frame-pointer"
 -    LDFLAGS="-s ${LDFLAGS}"
    fi
  fi

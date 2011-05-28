@@ -1,11 +1,11 @@
---- fox-1.7.25/Makefile.am.orig	2010-10-07 04:46:48.000000000 +0200
-+++ fox-1.7.25/Makefile.am	2011-05-13 16:25:36.062671005 +0200
+--- fox-1.7.26/Makefile.am.orig	2011-04-13 02:13:55.000000000 +0200
++++ fox-1.7.26/Makefile.am	2011-05-28 07:42:42.173788784 +0200
 @@ -3,7 +3,7 @@
  # For non-gcc compilers, change the options to "no-dependencies"
  AUTOMAKE_OPTIONS = foreign dist-zip
  
 -SUBDIRS    = utils include lib chart doc tests shutterbug adie pathfinder calculator controlpanel windows
 +SUBDIRS    = utils include lib chart tests shutterbug adie pathfinder calculator controlpanel windows
- EXTRA_DIST = ADDITIONS AUTHORS INSTALL LICENSE LICENSE_ADDENDUM TRACING README fox.spec fox.lsm index.html aclocal.m4
+ EXTRA_DIST = ADDITIONS AUTHORS INSTALL LICENSE LICENSE_ADDENDUM TRACING README fox.spec index.html aclocal.m4
  
- bin_SCRIPTS = fox-config
+ pkgconfigdir = $(libdir)/pkgconfig

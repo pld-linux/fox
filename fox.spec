@@ -6,12 +6,12 @@
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl.UTF-8):	FOX - toolkit graficzny w C++
 Name:		fox
-Version:	1.7.25
+Version:	1.7.26
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://fox-toolkit.org/ftp/%{name}-%{version}.tar.gz
-# Source0-md5:	232e2996be39148287e80b59061c7a66
+# Source0-md5:	acaf8a1f33d02265b26a2b0c3fd06625
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 Patch2:		%{name}-Makefile.patch
@@ -199,7 +199,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc ADDITIONS TRACING
-%attr(755,root,root) %{_bindir}/fox-config
 %attr(755,root,root) %{_bindir}/reswrap
 %attr(755,root,root) %{_libdir}/libCHART-1.7.so
 %attr(755,root,root) %{_libdir}/libFOX-1.7.so
@@ -207,7 +206,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libCHART-1.7.la
 %{_libdir}/libFOX-1.7.la
 %{_includedir}/fox-1.7
-%{_pkgconfigdir}/fox.pc
+%{_pkgconfigdir}/fox17.pc
 %{_mandir}/man1/reswrap.1*
 
 %if %{with static_libs}
