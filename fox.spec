@@ -1,15 +1,16 @@
 #
 # Conditional build:
 %bcond_without	cups		# CUPS support
+%bcond_with	openjpeg	# JPEG2000 support (unfinished in sources)
 %bcond_without	static_libs	# don't build static libraries
 #
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl.UTF-8):	FOX - toolkit graficzny w C++
 Name:		fox
-# 1.7 is devel, we should try to keep stable line
+# NOTE: after switching to 1.8.x keep stable (1.8.x) on HEAD and devel (1.9.x) on DEVEL
 Version:	1.7.32
 Release:	1
-License:	LGPL v2.1+
+License:	LGPL v3+ with relinking exemption
 Group:		X11/Libraries
 Source0:	http://ftp.fox-toolkit.org/pub/%{name}-%{version}.tar.gz
 # Source0-md5:	1cf2607d15ffad5b664cf65bfcd249bc
@@ -28,6 +29,8 @@ BuildRequires:	libpng-devel >= 1.2.5
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel >= 3.5.7
 BuildRequires:	libtool >= 2:1.5
+BuildRequires:	libwebp-devel
+%{?with_openjpeg:BuildRequires:	openjpeg-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libXcursor-devel
 BuildRequires:	xorg-lib-libXext-devel
@@ -80,6 +83,8 @@ Requires:	libjpeg-devel >= 6b
 Requires:	libpng-devel >= 1.2.5
 Requires:	libstdc++-devel
 Requires:	libtiff-devel >= 3.5.7
+Requires:	libwebp-devel
+%{?with_openjpeg:Requires:	openjpeg-devel}
 Requires:	xorg-lib-libXcursor-devel
 Requires:	xorg-lib-libXext-devel
 Requires:	xorg-lib-libXft-devel
@@ -142,6 +147,7 @@ FOX - przykładowe programy.
 %configure \
 	%{?with_cups:--enable-cups} \
 	%{?debug:--enable-debug}%{!?debug:--enable-release} \
+	%{?with_openjpeg:--enable-jp2} \
 	--enable-static%{!?with_static_libs:=no} \
 	--with-opengl \
 	--with-xft \
