@@ -149,13 +149,14 @@ FOX - przykładowe programy.
 	%{?debug:--enable-debug}%{!?debug:--enable-release} \
 	%{?with_openjpeg:--enable-jp2} \
 	--enable-static%{!?with_static_libs:=no} \
+	--enable-webp \
 	--with-opengl \
-	--with-xft \
 	--with-shape \
-	--with-xshm \
 	--with-xcursor \
+	--with-xft \
+	--with-xim \
 	--with-xrandr \
-	--with-xim
+	--with-xshm
 
 %{__make}
 
