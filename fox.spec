@@ -1,19 +1,19 @@
 #
 # Conditional build:
 %bcond_without	cups		# CUPS support
-%bcond_with	openjpeg	# JPEG2000 support (unfinished in sources)
+%bcond_without	openjpeg	# JPEG2000 support
 %bcond_without	static_libs	# don't build static libraries
 #
 Summary:	The FOX C++ GUI Toolkit
 Summary(pl.UTF-8):	FOX - toolkit graficzny w C++
 Name:		fox
 # NOTE: after switching to 1.8.x keep stable (1.8.x) on HEAD and devel (1.9.x) on DEVEL
-Version:	1.7.36
+Version:	1.7.37
 Release:	1
 License:	LGPL v3+ with relinking exemption
 Group:		X11/Libraries
 Source0:	http://ftp.fox-toolkit.org/pub/%{name}-%{version}.tar.gz
-# Source0-md5:	381e1aed480907e1db4b9ea0a5d22e20
+# Source0-md5:	a2b6cb083aca7e3ae069f34c6133f88f
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 Patch2:		%{name}-Makefile.patch
