@@ -1,0 +1,38 @@
+--- fox-1.7.49/lib/FXAtomic.cpp.orig	2016-01-03 21:32:28.624304727 +0100
++++ fox-1.7.49/lib/FXAtomic.cpp	2016-01-03 21:34:45.642765297 +0100
+@@ -266,7 +266,7 @@
+ FXptr atomicSet(volatile FXptr* ptr,FXptr v){
+ #if defined(WIN32) && ((_MSC_VER >= 1400) || (__BORLANDC__ >= 0x500))
+    return (FXptr)InterlockedExchangePointer(ptr,v);
+-#elif ((defined(__GNUC__) || defined(__INTEL_COMPILER)) && defined(__i386__))
++#elif ((defined(__GNUC__) || defined(__INTEL_COMPILER)) && (defined(__i386__) || defined(__ILP32__)))
+   FXptr ret=v;
+   __asm__ __volatile__("xchgl %0, (%1)\n\t" : "=r"(ret) : "r"(ptr), "0"(ret) : "memory", "cc");
+   return ret;
+@@ -290,7 +290,7 @@
+   return (FXptr)InterlockedExchangeAdd64((LONGLONG*)ptr,(LONGLONG)v);
+ #elif defined(WIN32)
+   return (FXptr)InterlockedExchangeAdd((LONG*)ptr,(LONG)v);
+-#elif ((defined(__GNUC__) || defined(__INTEL_COMPILER)) && defined(__i386__))
++#elif ((defined(__GNUC__) || defined(__INTEL_COMPILER)) && (defined(__i386__) || defined(__ILP32__)))
+   register FXptr ret=(void*)v;
+   __asm__ __volatile__ ("lock\n\t"
+                         "xaddl %0, (%1)\n\t" : "=r"(ret) : "r"(ptr), "0"(ret) : "memory", "cc");
+@@ -314,7 +314,7 @@
+ FXptr atomicCas(volatile FXptr* ptr,FXptr expect,FXptr v){
+ #if defined(WIN32) && ((_MSC_VER >= 1400) || (__BORLANDC__ >= 0x500))
+   return (FXptr)InterlockedCompareExchangePointer((void**)ptr,v,expect);
+-#elif ((defined(__GNUC__) || defined(__INTEL_COMPILER)) && defined(__i386__))
++#elif ((defined(__GNUC__) || defined(__INTEL_COMPILER)) && (defined(__i386__) || defined(__ILP32__)))
+   register FXptr ret=(FXptr)v;
+   __asm__ __volatile__("lock\n\t"
+                        "cmpxchgl %2, (%1)\n\t" : "=a"(ret) : "r"(ptr), "r"(v), "a"(expect) : "memory", "cc");
+@@ -340,7 +340,7 @@
+ FXbool atomicBoolCas(volatile FXptr* ptr,FXptr expect,FXptr v){
+ #if defined(WIN32) && ((_MSC_VER >= 1400) || (__BORLANDC__ >= 0x500))
+   return (InterlockedCompareExchangePointer((void**)ptr,v,expect)==expect);
+-#elif ((defined(__GNUC__) || defined(__INTEL_COMPILER)) && defined(__i386__))
++#elif ((defined(__GNUC__) || defined(__INTEL_COMPILER)) && (defined(__i386__) || defined(__ILP32__)))
+   register FXbool ret;
+   __asm__ __volatile__ ("lock\n\t"
+                         "cmpxchgl %2, (%1)\n\t"
