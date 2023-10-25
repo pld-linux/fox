@@ -1,11 +1,11 @@
---- fox-1.7.25/lib/Makefile.am.orig	2010-11-02 03:07:14.000000000 +0100
-+++ fox-1.7.25/lib/Makefile.am	2011-05-13 16:24:24.319335269 +0200
-@@ -7,7 +7,7 @@
+--- fox-1.7.84/lib/Makefile.am.orig	2023-10-25 07:07:48.220902965 +0200
++++ fox-1.7.84/lib/Makefile.am	2023-10-25 06:19:02.042506050 +0200
+@@ -8,7 +8,7 @@ SUFFIXES = .gif .bmp
  
  lib_LTLIBRARIES = libFOX-1.7.la
  
 -libFOX_1_7_la_LIBADD  = $(X_LIBS) $(X_PRE_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS) $(GL_LIBS)
 +libFOX_1_7_la_LIBADD  = $(X_LIBS) $(X_BASE_LIBS) $(X_EXTRA_LIBS) $(GL_LIBS) -lfontconfig
  
- libFOX_1_7_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) -export-dynamic
+ libFOX_1_7_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) -export-dynamic -no-undefined
  

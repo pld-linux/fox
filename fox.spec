@@ -8,12 +8,12 @@ Summary:	The FOX C++ GUI Toolkit
 Summary(pl.UTF-8):	FOX - toolkit graficzny w C++
 Name:		fox
 # NOTE: after switching to 1.8.x keep stable (1.8.x) on HEAD and devel (1.9.x) on DEVEL
-Version:	1.7.57
-Release:	3
+Version:	1.7.84
+Release:	0.1
 License:	LGPL v3+ with relinking exemption
 Group:		X11/Libraries
-Source0:	http://ftp.fox-toolkit.org/pub/%{name}-%{version}.tar.gz
-# Source0-md5:	caeed36d43b5d4f18193657bf236200d
+Source0:	http://fox-toolkit.org/ftp/%{name}-%{version}.tar.gz
+# Source0-md5:	48eaf928985a52be0ef628f51fb5599f
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 Patch2:		%{name}-Makefile.patch
@@ -41,8 +41,6 @@ BuildRequires:	xorg-lib-libXrandr-devel
 BuildRequires:	zlib-devel >= 1.1.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_noautoreqdep	libGL.so.1 libGLU.so.1
-
 %description
 FOX is a C++-Based Library for Graphical User Interface Development
 FOX supports modern GUI features, such as Drag-and-Drop, Tooltips, Tab
@@ -64,7 +62,7 @@ Summary:	FOX example applications
 Summary(pl.UTF-8):	Przykłady aplikacji w FOX
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	fox-example-apps
+Obsoletes:	fox-example-apps < 0.99.173
 
 %description progs
 Editor and file browser, written with FOX.
