@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	FOX - toolkit graficzny w C++
 Name:		fox
 # NOTE: after switching to 1.8.x keep stable (1.8.x) on HEAD and devel (1.9.x) on DEVEL
 Version:	1.7.84
-Release:	0.1
+Release:	1
 License:	LGPL v3+ with relinking exemption
 Group:		X11/Libraries
 Source0:	http://fox-toolkit.org/ftp/%{name}-%{version}.tar.gz
