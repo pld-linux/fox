@@ -1,38 +1,47 @@
---- fox-1.7.84/lib/FXAtomic.cpp.orig	2023-06-14 06:50:33.000000000 +0200
-+++ fox-1.7.84/lib/FXAtomic.cpp	2023-10-26 06:19:01.695280795 +0200
-@@ -721,7 +721,7 @@ FXptr atomicSet(volatile FXptr* ptr,FXpt
-   return result;
- #elif (defined(WIN32) && (_MSC_VER >= 1500))
-   return (FXptr)_InterlockedExchange((LONG*)ptr,(LONG)v);
--#elif (defined(HAVE_INLINE_ASSEMBLY) && defined(__i386__))
-+#elif (defined(HAVE_INLINE_ASSEMBLY) && (defined(__i386__) || (defined(__x86_64__) && defined(__ILP32__))))
+--- fox-1.7.85/include/FXAtomic.h.orig	2024-11-09 22:01:30.184022460 +0100
++++ fox-1.7.85/include/FXAtomic.h	2024-11-09 22:01:42.180624136 +0100
+@@ -810,7 +810,7 @@ static inline FXptr atomicSet(volatile F
+   return __atomic_exchange_n(ptr,v,__ATOMIC_SEQ_CST);
+ #elif ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 1)))
+   return (TPtr)__sync_lock_test_and_set(ptr,v);
+-#elif (defined(__GNUC__) && defined(__i386__))
++#elif (defined(__GNUC__) && (defined(__i386__) || (defined(__x86_64__) && defined(__ILP32__))))
    FXptr ret=v;
-   __asm__ __volatile__("xchgl %0, (%1)\n\t" : "=r"(ret) : "r"(ptr), "0"(ret) : "memory", "cc");
+   __asm__ __volatile__("xchgl %0,(%1)\n\t" : "=r"(ret) : "r"(ptr), "0"(ret) : "memory", "cc");
    return ret;
-@@ -746,7 +746,7 @@ FXptr atomicAdd(volatile FXptr* ptr,FXiv
-   return (FXptr)_InterlockedExchangeAdd64((volatile LONGLONG*)ptr,(LONGLONG)v);
- #elif (defined(WIN32) && (_MSC_VER >= 1600))
-   return (FXptr)_InterlockedExchangeAdd((volatile LONG*)ptr,(LONG)v);
--#elif (defined(HAVE_INLINE_ASSEMBLY) && defined(__i386__))
-+#elif (defined(HAVE_INLINE_ASSEMBLY) && (defined(__i386__) || (defined(__x86_64__) && defined(__ILP32__))))
-   FXptr ret=(void*)v;
-   __asm__ __volatile__ ("lock\n\t"
-                         "xaddl %0, (%1)\n\t" : "=r"(ret) : "r"(ptr), "0"(ret) : "memory", "cc");
-@@ -772,7 +772,7 @@ FXptr atomicCas(volatile FXptr* ptr,FXpt
-   return (FXptr)_InterlockedCompareExchange64((volatile LONGLONG*)ptr,(LONGLONG)v,(LONGLONG)expect);
- #elif defined(WIN32) && (MSC_VER >=1500)
-   return (FXptr)_InterlockedCompareExchange((volatile LONG*)ptr,(LONG)v,(LONG)expect);
--#elif (defined(HAVE_INLINE_ASSEMBLY) && defined(__i386__))
-+#elif (defined(HAVE_INLINE_ASSEMBLY) && (defined(__i386__) || (defined(__x86_64__) && defined(__ILP32__))))
+@@ -836,7 +836,7 @@ static inline FXptr atomicCas(volatile F
+   return ex;
+ #elif ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 1)))
+   return __sync_val_compare_and_swap(ptr,expect,v);
+-#elif (defined(__GNUC__) && defined(__i386__))
++#elif (defined(__GNUC__) && (defined(__i386__) || (defined(__x86_64__) && defined(__ILP32__))))
    FXptr ret;
    __asm__ __volatile__("lock\n\t"
-                        "cmpxchgl %2, (%1)\n\t" : "=a"(ret) : "r"(ptr), "r"(v), "a"(expect) : "memory", "cc");
-@@ -800,7 +800,7 @@ FXbool atomicBoolCas(volatile FXptr* ptr
-   return (_InterlockedCompareExchange64((volatile LONGLONG*)ptr,(LONGLONG)v,(LONGLONG)expect)==(LONGLONG)expect);
- #elif defined(WIN32) && (MSC_VER >=1500)
-   return (_InterlockedCompareExchange((volatile LONG*)ptr,(LONG)v,(LONG)expect)==(LONG)expect);
--#elif (defined(HAVE_INLINE_ASSEMBLY) && defined(__i386__))
-+#elif (defined(HAVE_INLINE_ASSEMBLY) && (defined(__i386__) || (defined(__x86_64__) && defined(__ILP32__))))
+                        "cmpxchgl %2,(%1)\n\t" : "=a"(ret) : "r"(ptr), "r"(v), "a"(expect) : "memory", "cc");
+@@ -864,7 +864,7 @@ static inline FXbool atomicBoolCas(volat
+   return __atomic_compare_exchange_n(ptr,&ex,v,false,__ATOMIC_SEQ_CST,__ATOMIC_RELAXED);
+ #elif ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 1)))
+   return __sync_bool_compare_and_swap(ptr,expect,v);
+-#elif (defined(__GNUC__) && defined(__i386__))
++#elif (defined(__GNUC__) && (defined(__i386__) || (defined(__x86_64__) && defined(__ILP32__))))
    FXbool ret;
    __asm__ __volatile__ ("lock\n\t"
-                         "cmpxchgl %2, (%1)\n\t"
+                         "cmpxchgl %2,(%1)\n\t"
+@@ -916,7 +916,7 @@ static inline FXbool atomicBoolDCas(vola
+                         "andl $1, %%eax\n\t"
+                         "xchgl %%esi, %%ebx\n\t" : "=a"(ret) : "D"(ptr), "a"(cmpa), "d"(cmpb), "S"(a), "c"(b) : "memory", "cc");
+   return ret;
+-#elif (defined(__GNUC__) && defined(__i386__))
++#elif (defined(__GNUC__) && (defined(__i386__) || (defined(__x86_64__) && defined(__ILP32__))))
+   FXptr ret;
+   __asm__ __volatile__ ("lock\n\t"
+                         "cmpxchg8b (%1)\n\t"
+@@ -948,7 +948,7 @@ static inline FXptr atomicAdd(volatile F
+   return __atomic_fetch_add(ptr,v,__ATOMIC_SEQ_CST);
+ #elif ((__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 1)))
+   return __sync_fetch_and_add(ptr,v);
+-#elif (defined(__GNUC__) && defined(__i386__))
++#elif (defined(__GNUC__) && (defined(__i386__) || (defined(__x86_64__) && defined(__ILP32__))))
+   FXptr ret=(TPtr)v;
+   __asm__ __volatile__ ("lock\n\t"
+                         "xaddl %0,(%1)\n\t" : "=r"(ret) : "r"(ptr), "0"(ret) : "memory", "cc");

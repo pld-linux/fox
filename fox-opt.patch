@@ -1,5 +1,5 @@
---- fox-1.7.84/configure.ac.orig	2023-09-11 23:22:01.000000000 +0200
-+++ fox-1.7.84/configure.ac	2023-10-25 06:16:57.746509915 +0200
+--- fox-1.7.85/configure.ac.orig	2024-08-16 06:27:28.000000000 +0200
++++ fox-1.7.85/configure.ac	2024-11-09 21:39:12.397936536 +0100
 @@ -65,9 +65,6 @@ AC_SUBST(LT_CURRENT)
  AC_SUBST(LT_REVISION)
  AC_SUBST(LT_AGE)
@@ -10,7 +10,7 @@
  # More secret source
  AC_GNU_SOURCE
  
-@@ -133,7 +130,7 @@ AC_MSG_CHECKING(for debugging)
+@@ -134,7 +131,7 @@ AC_MSG_CHECKING(for debugging)
  AC_ARG_ENABLE(debug,[  --enable-debug          compile for debugging])
  AC_MSG_RESULT([$enable_debug])
  if test "x$enable_debug" = "xyes" ; then
@@ -19,11 +19,11 @@
  fi
  
  # Building for release
-@@ -141,7 +138,7 @@ AC_MSG_CHECKING(for release build)
+@@ -142,7 +139,7 @@ AC_MSG_CHECKING(for release build)
  AC_ARG_ENABLE(release,[  --enable-release        compile for release])
  AC_MSG_RESULT([$enable_release])
  if test "x$enable_release" = "xyes" ; then
--  CXXFLAGS="${CXXFLAGS} -O3 -DNDEBUG"
+-  CXXFLAGS="${CXXFLAGS} -O2 -DNDEBUG"
 +  CXXFLAGS="${CXXFLAGS} -DNDEBUG"
    if test "${GXX}" = "yes" ; then
      CXXFLAGS="${CXXFLAGS} -ffast-math -fstrict-overflow -fstrict-aliasing -finline-functions -fomit-frame-pointer -fcf-protection=none -fno-stack-protector"
