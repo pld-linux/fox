@@ -8,12 +8,12 @@ Summary:	The FOX C++ GUI Toolkit
 Summary(pl.UTF-8):	FOX - toolkit graficzny w C++
 Name:		fox
 # NOTE: after switching to 1.8.x keep stable (1.8.x) on HEAD and devel (1.9.x) on DEVEL
-Version:	1.7.85
-Release:	3
+Version:	1.7.89
+Release:	1
 License:	LGPL v3+ with relinking exemption
 Group:		X11/Libraries
 Source0:	http://fox-toolkit.org/ftp/%{name}-%{version}.tar.gz
-# Source0-md5:	9e1dc636bbe3f0b679a66dc50396b3ea
+# Source0-md5:	d9d8863cec1bbb7581de6cb24220a8c3
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 Patch2:		%{name}-Makefile.patch
@@ -184,10 +184,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS LICENSE_ADDENDUM README
 %attr(755,root,root) %{_bindir}/ControlPanel
-%attr(755,root,root) %{_libdir}/libCHART-1.7.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libCHART-1.7.so.0
-%attr(755,root,root) %{_libdir}/libFOX-1.7.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libFOX-1.7.so.0
+%{_libdir}/libCHART-1.7.so.*.*.*
+%ghost %{_libdir}/libCHART-1.7.so.0
+%{_libdir}/libFOX-1.7.so.*.*.*
+%ghost %{_libdir}/libFOX-1.7.so.0
 %{_mandir}/man1/ControlPanel.1*
 
 %files progs
@@ -207,9 +207,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc ADDITIONS TRACING
 %attr(755,root,root) %{_bindir}/fox-config
 %attr(755,root,root) %{_bindir}/reswrap
-%attr(755,root,root) %{_libdir}/libCHART-1.7.so
-%attr(755,root,root) %{_libdir}/libFOX-1.7.so
-%attr(755,root,root) %{_libdir}/libFOX.so
+%{_libdir}/libCHART-1.7.so
+%{_libdir}/libFOX-1.7.so
+%{_libdir}/libFOX.so
 %{_libdir}/libCHART-1.7.la
 %{_libdir}/libFOX-1.7.la
 %{_includedir}/fox-1.7
